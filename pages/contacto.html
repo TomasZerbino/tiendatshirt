@@ -6,11 +6,12 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./../assets/css/style.css">
+   <link href="./../assets/css/bootstrap.min.css" rel="stylesheet">
    <title>Contacto</title>
 </head>
 
 <body>
-   <div class="grid">
+   <div id="gridContact">
    <header class="header">
       <div class="header__logo">
         <img src="./../assets/img/logo.png" alt="logo">
@@ -33,75 +34,90 @@
     </header>
 
 <main>
-<div id="gridContact">
-   <section>
+
+<div class="container">
+   <div class="row">
+      <div class="col">
          <h1 class="title">Contacto</h1>
          <p class="paragraph">Cualquier consulta que tengas dejanos tu comentario llenando el
          formulario o escribinos por nuestras redes, te estaremos leyendo!</p>
-
-   </section>
-   <div class="contact__container">
-      <form action="">
-         <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" required>
+      </div>
+      <div class="col-md-8 col-sm-12">
+         <div class="contact__container">
+            <form action="">
+               <div>
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" id="nombre" required>
+               </div>
+      
+               <div>
+                  <label for="apellido">Apellido:</label>
+                   <input type="text" id="apellido" required>
+               </div>
+      
+               <div>
+                  <label for="telefono">Telefono:</label>
+                  <input type="tel" id="telefono">
+               </div>
+      
+               <div>
+                  <label for="mail">Su email:</label>
+                  <input type="mail" required>
+               </div>
+               <div>
+                  <div>
+                     <label for="comentario">Envia tu comentario:</label>
+                  </div>
+                     <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
+                  </div>
+      
+               <div>
+                  <input type="submit" id="botonsubmit" value="Enviar">
+                  <input type="reset" id="botonreset" value="Limpiar">
+               </div>
+            </form>
          </div>
 
-         <div>
-            <label for="apellido">Apellido:</label>
-             <input type="text" id="apellido" required>
-         </div>
+      </div>
+   </div>  
+  
 
-         <div>
-            <label for="telefono">Telefono:</label>
-            <input type="tel" id="telefono">
-         </div>
-
-         <div>
-            <label for="mail">Su email:</label>
-            <input type="mail" required>
-         </div>
-         <div>
-            <div>
-               <label for="comentario">Envia tu comentario:</label>
-            </div>
-               <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
-            </div>
-
-         <div>
-            <input type="submit" id="botonsubmit" value="Enviar">
-            <input type="reset" id="botonreset" value="Limpiar">
-         </div>
-      </form>
-   </div>
 </main>
-
-   <footer class="footer">
-   <div class="footer__container">
-     <div class="footer__boxs">
-       <h3>Contacto:</h3>
-       <ul>
-         <li><span>Cel: 111+111+111</span></li>
-         <li><span>Mail: contacto@gmail.com</span></li>
-       </ul>
-     </div>
-     <div class="footer__boxs">
-       <h3>Siguenos:</h3>
-       <ul>
-         <li><a href="https://instagram.com/instagram/" target="_blank">Instagram</a></li>
-         <li><a href="https://facebook.com/facebook/" target="_blank">Facebook</a></li>
-       </ul>
-     </div>
-     <div class="footer__boxs">
-       <h3>Copyright</h3>
-       <ul>
-         <li>Derechos reservados</li>
-         <li>Tomas Zerbino ©</li>
-       </ul>
-     </div>
-   </div>
-   </footer>
+<footer class="bg-dark text-white pt4 pb4">
+   <div class="container text-center text-md-left">
+       <div class="row justify-content-center">
+         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-4">
+               <h4 class="text-uppercase mb-4 font-weight-bloder">Contacto</h4>
+               <p>
+                   <i class="fas fa-phone mr-3"></i> 111+111+111
+               </p>
+               <p>
+                   <i class="fas fa-envelope mr-3"></i> nxtsg@gmail.com
+               </p>
+           </div>    
+           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-4">
+                   <h4 class="text-uppercase mb-4 font-weight-bloder ">Siguenos</h4>
+                   <p>
+                       <i class="fa-brands fa-facebook"></i>
+                       <a href="https://facebook.com/facebook/" 
+                       class="text-white text-decoration-none" target="blank"> Facebook</a>
+                   </p>
+                   <p>
+                       <i class="fa-brands fa-instagram"></i>
+                        <a href="https://instagram.com/instagram/" 
+                        class="text-white text-decoration-none" target="blank"> Instagram</a>
+                   </p>
+           </div>
+           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-4">
+               <h4 class="text-uppercase mb-4 font-weight-bloder ">Copyright</h4>
+               <p>Derechos reservados</p>
+               <p>Tomas Zerbino ©</p>
+           </div>
+       </div>
+   </div>      
   </div>
+
+  <script src="./../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

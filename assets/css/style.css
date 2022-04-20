@@ -2,10 +2,11 @@
 *{
    padding: 0;
    margin: 0;
-   text-decoration: none;
+   text-decoration: none; 
    list-style: none;
    box-sizing: border-box;   
 }
+
 
 img{
    width: 100%;
@@ -23,7 +24,7 @@ body{
    "header header header"
    "main main main"
    "footer footer footer";
-   grid-template-rows: 4.5rem 1fr 7.5rem;
+   grid-template-rows: 4.5rem 1fr 10rem;
    grid-template-columns: repeat(3, 1fr);
 }
 a, li{
@@ -230,14 +231,24 @@ main{
    justify-content: center;
    padding: 30px 40px;
 }
-
-
-footer{
-   background-color: #333333; 
-   grid-area: footer;  
+#gridContact{
+   display: grid;
+   grid-template-areas: 
+   "header header header"
+   "main main main"
+   "footer footer footer";
+   grid-template-rows: 4.5rem 70vh 9rem;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 20px;
 }
 
-.footer__boxs h3{
+
+ footer{ 
+   grid-area: footer;
+justify-content: center;  
+}
+
+/*.footer__boxs h3{
    color: #1693A5 ;
 }
 
@@ -250,9 +261,9 @@ footer{
 .footer__boxs{
    width: 150px ;
    text-align: center;
-}
+}*/
 
-textarea { resize: none; 
+textarea { resize: none;  
    }
 
 @media screen and (max-width: 450px) {
@@ -264,21 +275,7 @@ textarea { resize: none;
      .textoNosotros img{
         width: 100px;
      }
-
-     .footer__container{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 10px;
-     }
-
-     .footer__boxs{
-        padding: 10px 10px;
-     }
-     .grid{
-        grid-template-rows: 5rem 1fr 20rem;
-     }
-      
+         
 }
 
 @media screen and (max-width: 768px) {
@@ -309,5 +306,11 @@ textarea { resize: none;
       #menu:checked ~ ul{
          left: 0;
          transition: all 0.30s;
+      }
+      .grid{
+         grid-template-rows: 5rem 1fr 49vh;
+      }
+      #gridContact{
+         grid-template-rows: 5rem 1fr 49vh;
       }
 }   
