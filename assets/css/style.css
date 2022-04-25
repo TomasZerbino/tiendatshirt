@@ -30,6 +30,7 @@ body{
 a, li{
    font-family: 'fjalla one';
    color: #f0f0f0;
+   text-decoration: none;
 }
 
 .header__logo img{
@@ -125,12 +126,15 @@ main{
    background-color: #CCCCCC;
    font-size: xx-large;
    text-align: center;
+   padding: 20px 20px;
 }
 .paragraph{
    display: flex;
    background-color: #CCCCCC;
    font-size: larger;
    justify-content: center;
+   text-align: center;
+   padding:3px 3px;
 }
 
 .cardProduct__container{
@@ -140,7 +144,7 @@ main{
 }
 
 .cardProduct{
-   width: 420px;
+   width: 370px;
    border-color: #333333;
    border-style: solid;
    border-radius: 3%;
@@ -169,12 +173,43 @@ main{
    border-radius: 6px;
    padding: 5px;
    text-align: center;
-   font-size: 100%;  
+   font-size: 100%; 
 }
-.cardProduct__description__buy:hover{
-   transform: skew(7deg);
-   transition: all 0.3s;
 
+.cardProduct__description__buy:hover{
+   transform: skew(-7deg);
+   transition: all 0.3s;
+   color: #CCCCCC;
+
+}
+.cardProduct__description a::before {
+	position: absolute;
+	top: 0;
+	left: -49%;
+	z-index: 2;
+	display: none;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 70%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 70%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-6deg);
+	transform: skewX(-6deg);
+}
+.cardProduct__description a:hover::before {
+   display: block;
+	-webkit-animation: shine .50s;
+	animation: shine .50s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 50%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 50%;
+	}
 }
 
 #masVendido{
@@ -182,33 +217,22 @@ main{
    padding: 20px 20px;
    text-align: center;
    border: 3px solid #333333;
-   width: 95%;
+   width: 92%;
    margin: 7px auto;
 
 }
-
-.galeria{
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
+.galeria figure img {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;  
 }
 
-.galeria__img{
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   justify-content: center;
-   width: 420px;
+.galeria figure:hover img {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+   
 }
-
-.galeria__img img{
-   padding: 20px 30px;
-   margin-top: 7px;
-
-}
-
 .textoNosotros{
    background-color: #CCCCCC;
    margin: auto;
@@ -248,21 +272,6 @@ main{
 justify-content: center;  
 }
 
-/*.footer__boxs h3{
-   color: #1693A5 ;
-}
-
-.footer__container{
-   display: flex;
-   justify-content: space-evenly;
-   padding: 10px 20px;
-}
-
-.footer__boxs{
-   width: 150px ;
-   text-align: center;
-}*/
-
 textarea { resize: none;  
    }
 
@@ -296,6 +305,7 @@ textarea { resize: none;
          width: 100%;
          height: 100vh;
          right: 0;
+         z-index: 2;
       }
       .header__nav ul li{
          padding: 2rem;
@@ -308,9 +318,10 @@ textarea { resize: none;
          transition: all 0.30s;
       }
       .grid{
-         grid-template-rows: 5rem 1fr 49vh;
+         grid-template-rows: 5rem 1fr 60vh;
       }
       #gridContact{
-         grid-template-rows: 5rem 1fr 49vh;
+         grid-template-rows: 5rem 1fr 60vh;
       }
-}   
+
+}
