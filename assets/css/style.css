@@ -107,7 +107,6 @@ main{
    transform: translate(-5px, -5px);
    box-shadow: 5px 5px 5px #7c7b7b;
    transition: 0.5s;
-
 }
 
 #banner h1{
@@ -230,8 +229,7 @@ main{
 
 .galeria figure:hover img {
 	-webkit-filter: grayscale(0);
-	filter: grayscale(0);
-   
+	filter: grayscale(0);  
 }
 .textoNosotros{
    background-color: #CCCCCC;
