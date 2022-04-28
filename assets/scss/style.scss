@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fjalla+One&display=swap');
+@import 'variables';
+*{
+   padding: 0;
+   margin: 0;
+   text-decoration: none; 
+   list-style: none;
+   box-sizing: border-box;   
+}
+
+img{
+   width: 100%;
+   height: 100%;
+}
+
+body{
+   background-color: $color-bg;
+   font-family: 'fjalla one';  
+}
+
+.grid{
+   display: grid;
+   grid-template-areas: 
+   "header header header"
+   "main main main"
+   "footer footer footer";
+   grid-template-rows: 4.5rem 1fr 10rem;
+   grid-template-columns: repeat(3, 1fr);
+}
+a{
+   font-family: 'fjalla one';
+   color: #f0f0f0;
+   text-decoration: none;
+}
+
+.header__logo img{
+   width: 80px;
+}
+
+header{
+   background-color: $header-bgc;
+   grid-area: header;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row; 
+   padding: 20px 30px;
+}
+
+.header__nav ul{
+   display: flex;
+   align-items: center;
+}
+
+.header__nav li{
+   padding-right: 1rem;
+
+}
+   
+.header__nav a:hover{
+   color: $text-color;
+   font-size: larger;
+   transition: .5s;
+}
+
+.menuIcon img{
+   width: 39px;
+   height: 39px;
+}
+
+.menuIcon, #menu{
+   display: none;
+}
+
+main{
+   grid-area: main;
+}
+
+#banner{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   flex-direction: column;
+   background-image: linear-gradient( 0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5) ) 
+   ,url("./../img/banner.jpg");
+   height: 70vh;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
+}
+
+#bannerBtn{
+   font-size: 1.50rem;
+   padding: 10px 30px;
+   border: 3px solid #CCCCCC;
+   border-radius: 9px;
+   color: $text-color;
+   background-color: #333333;
+   margin-top: 30px;
+}
+#bannerBtn:hover{
+   transform: translate(-5px, -5px);
+   box-shadow: 5px 5px 5px #7c7b7b;
+   transition: 0.5s;
+}
+
+#banner h1{
+   font-size: 3rem;
+   color: $text-color;
+   padding: 10px 10px;
+}
+
+#banner h2{
+   font-size: 2rem;
+   color: $text-color;
+   padding: 20px 20px;
+}
+
+.title{
+   font-size: xx-large;
+   text-align: center;
+   padding: 20px 20px;
+}
+.paragraph{
+   display: flex;
+   font-size: larger;
+   justify-content: center;
+   text-align: center;
+   padding:3px 3px;
+}
+
+.cardProduct__container{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+}
+
+.cardProduct{
+   width: 370px;
+   border-color: #333333;
+   border-style: solid;
+   border-radius: 3%;
+   margin: 10px;
+   overflow: hidden;  
+}
+
+.cardProduct__img{
+   height: 90%; 
+}
+
+.cardProduct__description{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 20px;
+}
+
+.cardProduct__description__price{
+   font-size:x-large;
+}
+
+.cardProduct__description__buy{
+   background-color: #1693A5;
+   width: 35%;
+   border-radius: 6px;
+   padding: 5px;
+   text-align: center;
+   font-size: 100%; 
+    &:hover{
+        transform: skew(-7deg);
+        transition: all 0.3s;
+        color: #CCCCCC;
+    }
+}
+
+.cardProduct__description a::before {
+	position: absolute;
+	top: 0;
+	left: -49%;
+	z-index: 2;
+	display: none;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 70%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 70%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-6deg);
+	transform: skewX(-6deg);
+}
+.cardProduct__description a:hover::before {
+   display: block;
+	-webkit-animation: shine .50s;
+	animation: shine .50s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 50%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 50%;
+	}
+}
+
+#masVendido{
+   font-size: xx-large;
+   padding: 20px 20px;
+   text-align: center;
+   border: 3px solid #333333;
+   width: 92%;
+   margin: 7px auto;
+
+}
+.galeria{
+    padding: 20px; 
+    figure{
+        img {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            -webkit-transition: .3s ease-in-out;
+            transition: .3s ease-in-out;
+                &:hover{
+                    -webkit-filter: grayscale(0);
+                    filter: grayscale(0); }
+            
+
+        }
+    }
+}
+
+.textoNosotros{
+   background-color: $color-bg;
+   margin: auto;
+   margin-top: 50px;
+   margin-bottom: 50px; 
+   padding: 30px;
+   width: 75%;
+   font-size:x-large;
+   font-family: 'fjalla one';
+}
+.textoNosotros img{
+   width: 150px;
+   float: left;
+   padding: 10px;   
+}
+.contact__container{
+   display: flex;
+   justify-content: center;
+   padding: 30px 40px;
+}
+#gridContact{
+   display: grid;
+   grid-template-areas: 
+   "header header header"
+   "main main main"
+   "footer footer footer";
+   grid-template-rows: 4.5rem 70vh 9rem;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 20px;
+}
+
+
+ footer{ 
+   grid-area: footer;
+justify-content: center;  
+}
+
+textarea { resize: none;  
+   }
+
+@media screen and (max-width: 768px) {
+      .menuBtn{
+         display: block;      
+      }
+      .menuIcon{
+         display: block;
+         top: 20px;
+         right: 20px;
+      }
+      .header__nav ul{
+         display: block;
+         position: fixed;
+         background: #333333;
+         top: 60px;
+         left: -100%;
+         width: 100%;
+         height: 100vh;
+         right: 0;
+         z-index: 2;
+      }
+      .header__nav ul li{
+         padding: 2rem;
+         display: flex;
+         justify-content: center;
+         margin: 0;
+      }
+      #menu:checked ~ ul{
+         left: 0;
+         transition: all 0.30s;
+      }
+      .grid{
+         grid-template-rows: 5rem 1fr 60vh;
+      }
+      #gridContact{
+         grid-template-rows: 5rem 1fr 60vh;
+      }
+}
+@media screen and (max-width: 450px) {
+    .textoNosotros{
+       width: 95%;
+       font-size: larger;
+    }
+    
+    .textoNosotros img{
+       width: 100px;
+    }
+    .grid{
+       grid-template-rows: 5rem 1fr 80vh;
+    }
+    #gridContact{
+       grid-template-rows: 5rem 1fr 80vh;
+    }
+    .cardProduct__img {
+        height: 85%; }   
+}
