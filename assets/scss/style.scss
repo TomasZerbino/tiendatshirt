@@ -40,9 +40,9 @@ a{
 header{
    background-color: $header-bgc;
    grid-area: header;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+   display: map-get($map: $estilo, $key: disp);
+   justify-content: map-get($map: $estilo, $key: justify );
+   align-items: map-get($map: $estilo, $key: align );
    flex-direction: row; 
    padding: 20px 30px;
 }
@@ -96,7 +96,7 @@ main{
    border: 3px solid #CCCCCC;
    border-radius: 9px;
    color: $text-color;
-   background-color: #333333;
+   background-color: map-get($map: $estilo, $key: color );
    margin-top: 30px;
 }
 #bannerBtn:hover{
@@ -105,16 +105,19 @@ main{
    transition: 0.5s;
 }
 
+@mixin size ($fs, $c, $pad) {
+   font-size: $fs;
+   color: $c;
+   padding: $pad;
+}
+
 #banner h1{
-   font-size: 3rem;
-   color: $text-color;
-   padding: 10px 10px;
+   @include size(3rem,$text-color ,10px)
+
 }
 
 #banner h2{
-   font-size: 2rem;
-   color: $text-color;
-   padding: 20px 20px;
+@include size(2rem, $text-color ,20px )
 }
 
 .title{
@@ -150,9 +153,9 @@ main{
 }
 
 .cardProduct__description{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+   display: map-get($map: $estilo, $key: disp);
+   justify-content: map-get($map: $estilo, $key: justify );
+   align-items: map-get($map: $estilo, $key: align);
    padding: 10px 20px;
 }
 
