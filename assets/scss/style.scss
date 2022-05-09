@@ -137,6 +137,8 @@ main{
    display: flex;
    flex-wrap: wrap;
    justify-content: space-evenly;
+   padding-bottom: 20px;
+   padding-top: 20px;
 }
 
 .cardProduct{
@@ -145,11 +147,10 @@ main{
    border-style: solid;
    border-radius: 3%;
    margin: 10px;
-   overflow: hidden;  
-}
-
-.cardProduct__img{
-   height: 90%; 
+   overflow: hidden;
+   &__img{
+      height: 85%;
+   }
 }
 
 .cardProduct__description{
@@ -191,6 +192,7 @@ main{
 	-webkit-transform: skewX(-6deg);
 	transform: skewX(-6deg);
 }
+
 .cardProduct__description a:hover::before {
    display: block;
 	-webkit-animation: shine .50s;
@@ -234,20 +236,24 @@ main{
 }
 
 .textoNosotros{
-   background-color: $color-bg;
    margin: auto;
    margin-top: 50px;
    margin-bottom: 50px; 
-   padding: 30px;
+   padding: 20px 5px 120px 15px;
    width: 75%;
+   p{
+   background-color: $color-bg;
    font-size:x-large;
    font-family: 'fjalla one';
+   }
+   img{
+      width: 150px;
+      float: left;
+      padding: 10px;
+   }
+   
 }
-.textoNosotros img{
-   width: 150px;
-   float: left;
-   padding: 10px;   
-}
+   
 .contact__container{
    display: flex;
    justify-content: center;
@@ -263,7 +269,6 @@ main{
    grid-template-columns: repeat(3, 1fr);
    grid-gap: 20px;
 }
-
 
  footer{ 
    grid-area: footer;
@@ -312,13 +317,17 @@ textarea { resize: none;
 }
 @media screen and (max-width: 450px) {
     .textoNosotros{
-       width: 95%;
-       font-size: larger;
+      width: 90%;
+      padding: 10px 10px 50px 10px;
+       p{
+         font-size: larger;
+       }
+      img{
+         width: 100px;
+      } 
+      
     }
     
-    .textoNosotros img{
-       width: 100px;
-    }
     .grid{
        grid-template-rows: 5rem 1fr 80vh;
     }
