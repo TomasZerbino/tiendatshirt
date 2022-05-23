@@ -87,25 +87,25 @@ main {
 
 #banner h1 {
   font-size: 3rem;
-  color: #cccaca;
-  padding: 10px; }
+  padding: 10px;
+  color: #cccaca; }
 
 #banner h2 {
   font-size: 2rem;
-  color: #cccaca;
-  padding: 20px; }
+  padding: 20px;
+  color: #cccaca; }
 
 .title {
   font-size: xx-large;
-  text-align: center;
-  padding: 20px 20px; }
+  padding: 20px 20px;
+  text-align: center; }
 
 .paragraph {
-  display: flex;
   font-size: larger;
+  padding: 3px 3px;
+  display: flex;
   justify-content: center;
-  text-align: center;
-  padding: 3px 3px; }
+  text-align: center; }
 
 .cardProduct__container {
   display: flex;
@@ -134,12 +134,12 @@ main {
   font-size: x-large; }
 
 .cardProduct__description__buy {
+  font-size: 100%;
+  padding: 5px;
   background-color: #1693A5;
   width: 35%;
   border-radius: 6px;
-  padding: 5px;
-  text-align: center;
-  font-size: 100%; }
+  text-align: center; }
   .cardProduct__description__buy:hover {
     transform: skew(-7deg);
     transition: all 0.3s;

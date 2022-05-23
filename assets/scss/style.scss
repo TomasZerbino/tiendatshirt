@@ -105,32 +105,30 @@ main{
    transition: 0.5s;
 }
 
-@mixin size ($fs, $c, $pad) {
+@mixin size ($fs, $pad) {
    font-size: $fs;
-   color: $c;
    padding: $pad;
 }
 
 #banner h1{
-   @include size(3rem,$text-color ,10px)
-
+   @include size(3rem, 10px)
+   color: $text-color;   
 }
 
 #banner h2{
-@include size(2rem, $text-color ,20px )
+@include size(2rem, 20px )
+   color: $text-color;
 }
 
 .title{
-   font-size: xx-large;
+   @include size(xx-large,20px 20px )
    text-align: center;
-   padding: 20px 20px;
 }
 .paragraph{
+   @include size(larger,3px 3px )
    display: flex;
-   font-size: larger;
    justify-content: center;
    text-align: center;
-   padding:3px 3px;
 }
 
 .cardProduct__container{
@@ -165,12 +163,11 @@ main{
 }
 
 .cardProduct__description__buy{
+   @include size(100%,5px )
    background-color: #1693A5;
    width: 35%;
    border-radius: 6px;
-   padding: 5px;
-   text-align: center;
-   font-size: 100%; 
+   text-align: center; 
     &:hover{
         transform: skew(-7deg);
         transition: all 0.3s;
@@ -210,8 +207,7 @@ main{
 }
 
 #masVendido{
-   font-size: xx-large;
-   padding: 20px 20px;
+   @include size(xx-large,20px 20px )
    text-align: center;
    border: 3px solid #333333;
    width: 92%;
