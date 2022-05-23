@@ -211,6 +211,10 @@ main {
   justify-content: center;
   padding: 30px 40px; }
 
+.campo {
+  display: flex;
+  flex-direction: column; }
+
 #gridContact {
   display: grid;
   grid-template-areas: "header header header" "main main main" "footer footer footer";
