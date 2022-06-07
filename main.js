@@ -30,3 +30,71 @@ while (entrada != "ESC"){
     }
     entrada = prompt(`${nombre}, estas conforme con el servicio?`).toUpperCase();
 } 
+
+
+function compra(opcion) {
+    while (opcion !== "ESC") {
+        opcion = prompt (`Elija que articulo va a llevar: 
+                                            REMERA
+                                            HOODIE
+                                            REMERA Y HOODIE
+                                            ESC`).toUpperCase();
+    if(opcion === "REMERA"){
+        remera();
+    } else if (opcion === "HOODIE") {
+        hoodie();   
+    }else if (opcion === "REMERA Y HOODIE"){
+        hoodieRemera();
+    }else{
+        alert("Gracias por visitarnos");
+    }                                                             
+    }  
+}
+
+let cantidadRemera = "";
+let precioRemera = 0;
+let total = 0;
+let cantidadHoodie = "";
+let precioHoodie = 0;
+const mult = (a, b) => a * b;
+const suma = (a, b) => a + b;
+
+function remera() {
+    cantidadRemera = parseInt(prompt("Cuantas remeras va a llevar?"));
+    precioRemera = 600
+    total = 0
+    if (!isNaN(cantidadRemera)) {
+        total = mult(cantidadRemera, precioRemera);
+        alert(`El total a pagar es: $${total}`);
+    }else{
+        alert("La informacion ingresada no es valida");
+    }    
+}
+
+function hoodie() {
+    cantidadHoodie = parseInt(prompt("Cuantos hoodies va a llevar?"));
+    precioHoodie = 1500
+    total = 0
+    if (!isNaN(cantidadHoodie)) {
+        total = mult(cantidadHoodie, precioHoodie);
+        alert(`El total a pagar es: $${total}`)        
+    }else{
+        alert("La informacion ingresada no es valida")
+    }
+}
+
+function hoodieRemera() {
+    cantidadHoodie = parseInt(prompt("Cuantos hoodies va a llevar?"));
+    precioHoodie = 1500
+    cantidadRemera = parseInt(prompt("Cuantas remeras va a llevar?"));
+    precioRemera = 600
+    total = 0
+    if (!isNaN(cantidadHoodie) && !isNaN(cantidadRemera)){
+        total = suma(mult(cantidadHoodie, precioHoodie), mult(cantidadRemera, precioRemera))
+        alert(`El total a pagar es: $${total}`) 
+    }else{
+        alert("La informacion ingresada no es valida")
+    }
+    
+}
+compra()
