@@ -100,82 +100,101 @@
 // compra()
 
 class Producto {
-    constructor(producto, precio, cantidad){
-    this.producto = producto.toUpperCase();
+    constructor(nombre, precio, stock ){
+    this.nombre = nombre;
     this.precio = Number(precio);
-    this.cantidad = Number(cantidad);
-    this.vendido = false;
-    this.subtotal = 0;
-    this.envio = 0;
-    this.total = 0;
+    this.stock = stock;
     }
-    vender() {
-        this.vendido = true;
-    }
-    calculoSubtotal() {
-        this.subtotal = this.precio * this.cantidad
-
-    }
-    calculoEnvio(){
-        if(this.subtotal >= 3500){
-            this.envio = 0;
-        }else{
-            envio = 200
-        }
-    }
-    calculoTotal() {
-        this.total = this.subtotal + this.envio;
+    nuevoStock(x){
+        this.stock = this.stock - x;
     }
 }
 
 const productos = [];
+productos.push(new Producto ("remera", 600, 20));
+productos.push(new Producto ("hoodie", 1500, 20));
 
-const remera = new Producto ("Remera", 600, 0);
-productos.push(remera);
+const orednPrecio = () => {
+    productos.sort((a,b) => a.precio - b.precio);
+    mostratOrdenPrecio();
+}
 
-const hoodie = new Producto ("Hoodie", 1500, 0);
-productos.push(hoodie);
+const listaProductos = () => {
+    let array = [];
+    productos.forEach(producto => array.push(producto.nombre+ " $"+producto.precio));
+    alert("Lista de productos:"+"\n"+array.join("\n"));
+}
 
+let total= 0;
 
 const pedidoProducto = () => {
-    let producto = 0;
+    let producto = "";
     let cantidadProducto = 0;
     let precio = 0;
+    let agregar;
 
-    while ( producto == 0 || producto > 2 || !producto) {
-        producto = parseInt(prompt("¿Qué producto desea comprar?:\n 1: Remera\n 2: Hoodie"));
-    }
+    do {
+        producto = prompt("¿Qué producto desea comprar?: remera o hoodie");
+        cantidadProducto = parseInt(prompt("Cuantos deseada llevar.(Solo números)"));
 
     switch(producto) {
-        case 1:
-            producto = "Remera";
-            precio= 600;
+        case productos[0].nombre:
+            productos[0].nuevoStock(cantidadProducto);
+            if (productos[0].stock < 0 || isNaN(cantidadProducto)){
+                alert("No tenemos suficiente stock");
+                precio = 0;
+                cantidad = 0;
+            }else{
+                precio = productos[0].precio;
+            }
             break;
-        case 2:
-            producto = "Hoodie";
-            precio = 1500;
+        case productos[1].nombre:
+            productos[1].nuevoStock(cantidadProducto);
+            if(productos[1].stock < 0 || isNaN(cantidadProducto)){
+                alert("No tenemos suficiente stock");
+                precio = 0;
+                cantidad = 0;
+            }else{
+                precio = productos[1].precio;
+            }
             break;
+        default:
+            alert("Algo de lo ingresado no es correcto") 
+            precio = 0;
+            cantidadProducto = 0;   
+        }
+        total = total + precio*cantidadProducto;
+        agregar = confirm("Desea agregar otro producto?");
+    } while (agregar);
+    console.log(total)
+}
+
+
+const descuento = (total) => {
+    if (total>=5000){
+        total = total*0.85;
+        alert("Felicitaciones tienes 15% de descuento en tu compra")
     }
+    return total;
+}
 
-while( cantidadProducto == 0 || !cantidadProducto ) {
-    cantidadProducto = parseInt(prompt("Producto elegido: "+ producto + "\n Introduzca la cantidad deseada.(Solo números)"));
+const envio = (total) =>{
+    if(total > 2500){
+        alert("Con compras mayores a $2500 envio gratis\n Tu compra es de: $"+total);
+    }else {
+        alert("El valor del envio es $200 \n Tu compra es de: $"+total);
+        total = total + 200;
     }
-
-    const compra = new Producto(producto, precio, cantidadProducto);
-
-    return compra;    
-} 
-
-const pedido = pedidoProducto();
-
-pedido.calculoSubtotal();
-pedido.calculoEnvio();
-pedido.calculoTotal();
-
-alert("Detalle del pedido:\n\n"+
-    "- "+pedido.producto+ " x " +pedido.cantidad+ ": $"+pedido.precio * pedido.cantidad +"\n" +
-    "- Costo de envío: $"+pedido.envio+ "\n\n" +
-    "Total = $" +pedido.total
-);
+    return total;
+}
+const obtenerTotal = (total) => {
+    alert ("El total a pagar es $"+total);
+}
 
 
+
+const comprarProductos = () =>{
+    pedidoProducto()
+    obtenerTotal(envio(descuento(total)))
+}
+comprarProductos()
