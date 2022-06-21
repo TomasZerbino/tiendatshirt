@@ -1,104 +1,30 @@
-// let nombre = prompt("Ingrese su nombre").toUpperCase();
+const contenedorProductos = document.getElementById('contenedorProductos')
 
-// let numeroIngresado = parseInt(prompt(`Hola ${nombre}, ingrese un numero del 1 al 10`))
+let stockProductos = [
+    {id: 1, nombre: "Remera 1", cantidad:1, precio: 600, img: "./../assets/img/remera25.jpg"},
+    {id: 2, nombre: "Remera 2", cantidad:1, precio: 600, img: "./../assets/img/remera23.jpg"},
+    {id: 3, nombre: "Remera 3", cantidad:1, precio: 600, img: "./../assets/img/remera24.jpg"},
+    {id: 4, nombre: "Remera 4", cantidad:1, precio: 600, img: "./../assets/img/remera21.jpg"},
+    {id: 5, nombre: "Remera 5", cantidad:1, precio: 600, img: "./../assets/img/remera5.png"},
+    {id: 6, nombre: "Remera 6", cantidad:1, precio: 600, img: "./../assets/img/remera22.jpg"},
+    {id: 7, nombre: "Hoodie 1", cantidad:1, precio: 1500, img: "./../assets/img/hoodie3.jpg"},
+    {id: 8, nombre: "Hoodie 2", cantidad:1, precio: 1500, img: "./../assets/img/hoodie4.jpg"},
+    {id: 9, nombre: "Hoodie R", cantidad:1, precio: 1500, img: "./../assets/img/hoodie6.jpg"}
+]
 
-// for (let i = 1; i <= 10 ; i++) {
-//     let resultado = numeroIngresado * i;
-//     if(numeroIngresado > 10){
-//         break;
-//     }
-//     alert(numeroIngresado+" x "+i+" = "+resultado)
-// }
+stockProductos.forEach((producto) =>{
+    const div = document.createElement('div')
+    div.classList.add("cardProduct")
+    div.innerHTML = `
+    <img class="cardProduct__img" src=${producto.img}>
+    <div class="cardProduct__description">
+    <strong class="cardProduct__description__price">Precio:$${producto.precio}</strong>
+    <button id="agregar${producto.id}" class="cardProduct__description__buy">Comprar</button>
+    </div>    
+    `
+    contenedorProductos.appendChild(div)
 
-// let feed
-// let entrada = prompt(`${nombre}, estas conforme con el servicio?`).toUpperCase();
-
-// while (entrada != "ESC"){
-//     switch (entrada) {
-//         case "SI":
-//             alert ("Te agradecemos el feedback");            
-//             break;
-        
-//         case "NO":
-//             feed = prompt(`${nombre} ayúdanos a mejorar, dando tu opinión sobre 
-//             cualquier punto que consideres oportuno.`);
-//             break;    
-    
-//         default:
-//             alert("Responde SI/NO o ESC para omitir");
-//             break;
-//     }
-//     entrada = prompt(`${nombre}, estas conforme con el servicio?`).toUpperCase();
-// } 
-
-
-// function compra(opcion) {
-//     while (opcion !== "ESC") {
-//         opcion = prompt (`Elija que articulo va a llevar: 
-//                                             REMERA
-//                                             HOODIE
-//                                             REMERA Y HOODIE
-//                                             ESC`).toUpperCase();
-//     if(opcion === "REMERA"){
-//         remera();
-//     } else if (opcion === "HOODIE") {
-//         hoodie();   
-//     }else if (opcion === "REMERA Y HOODIE"){
-//         hoodieRemera();
-//     }else{
-//         alert("Gracias por visitarnos");
-//     }                                                             
-//     }  
-// }
-
-// let cantidadRemera = "";
-// let precioRemera = 0;
-// let total = 0;
-// let cantidadHoodie = "";
-// let precioHoodie = 0;
-// const mult = (a, b) => a * b;
-// const suma = (a, b) => a + b;
-
-// function remera() {
-//     cantidadRemera = parseInt(prompt("Cuantas remeras va a llevar?"));
-//     precioRemera = 600
-//     total = 0
-//     if (!isNaN(cantidadRemera)) {
-//         total = mult(cantidadRemera, precioRemera);
-//         alert(`El total a pagar es: $${total}`);
-//     }else{
-//         alert("La informacion ingresada no es valida");
-//     }    
-// }
-
-// function hoodie() {
-//     cantidadHoodie = parseInt(prompt("Cuantos hoodies va a llevar?"));
-//     precioHoodie = 1500
-//     total = 0
-//     if (!isNaN(cantidadHoodie)) {
-//         total = mult(cantidadHoodie, precioHoodie);
-//         alert(`El total a pagar es: $${total}`)        
-//     }else{
-//         alert("La informacion ingresada no es valida")
-//     }
-// }
-
-// function hoodieRemera() {
-//     cantidadHoodie = parseInt(prompt("Cuantos hoodies va a llevar?"));
-//     precioHoodie = 1500
-//     cantidadRemera = parseInt(prompt("Cuantas remeras va a llevar?"));
-//     precioRemera = 600
-//     total = 0
-//     if (!isNaN(cantidadHoodie) && !isNaN(cantidadRemera)){
-//         total = suma(mult(cantidadHoodie, precioHoodie), mult(cantidadRemera, precioRemera))
-//         alert(`El total a pagar es: $${total}`) 
-//     }else{
-//         alert("La informacion ingresada no es valida")
-//     }
-    
-// }
-// compra()
-
+})
 class Producto {
     constructor(nombre, precio, stock ){
     this.nombre = nombre;
@@ -197,4 +123,14 @@ const comprarProductos = () =>{
     pedidoProducto()
     obtenerTotal(envio(descuento(total)))
 }
-comprarProductos()
+
+//de momento funciona unicamente con el boton de la primera card
+let botonComprar = document.querySelector("button.cardProduct__description__buy")
+botonComprar.onclick = () =>{comprarProductos()}
+
+
+
+
+
+
+
