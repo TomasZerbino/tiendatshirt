@@ -16,7 +16,9 @@ body {
 
 .grid {
   display: grid;
-  grid-template-areas: "header header header" "main main main" "footer footer footer";
+  grid-template-areas: "header header header"
+ "main main main"
+ "footer footer footer";
   grid-template-rows: 4.5rem 1fr 10rem;
   grid-template-columns: repeat(3, 1fr); }
 
@@ -28,6 +30,17 @@ a {
 .header__logo img {
   width: 80px; }
 
+#shoppingBag{
+  background-color: #cccaca;
+  border: none;
+  color: #333333;
+  padding: 15px;
+  display: flex;
+  border-radius: 4px;
+}
+#shoppingBag:hover{
+  color: #1693A5;
+}
 header {
   background-color: #333333;
   grid-area: header;
@@ -107,6 +120,78 @@ main {
   justify-content: center;
   text-align: center; }
 
+.modalContainer{
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333333bd;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
+}
+.modalContainerShow{
+  opacity: 1;
+  pointer-events: unset;
+  transition: opacity .6s;
+}
+
+.modalCarrito{
+  margin: auto;
+  width: 80%;
+  max-width: 500px;
+  max-height: 80%;
+  background-color: #cccaca;
+  border-radius: 7px;
+  padding: 2em 1.5em;
+  text-align: center;
+}
+.carritoBtns{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px ;
+  padding-bottom: 10px;
+}
+.btnEliminarDeCarrito{
+  border: none;
+  background-color: #cccaca;
+}
+
+#cerrarCarrito{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 26px;
+  width: 26px;
+  border-radius: 100px;
+  background-color: #cccaca;
+  transition: all .3s;
+}
+#cerrarCarrito:hover{
+  background-color: #cccaca;
+  color: #CC2F05;
+  border-color: #CC2F05;
+}
+#vaciarCarrito{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #1693A5;
+  padding: 5px;
+  transition: all .4s;
+}
+#vaciarCarrito:hover{
+  background-color: #757A7C ;
+}
+.agregadoAlCarrito{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+}
 .cardProduct__container {
   display: flex;
   flex-wrap: wrap;
@@ -217,7 +302,9 @@ main {
 
 #gridContact {
   display: grid;
-  grid-template-areas: "header header header" "main main main" "footer footer footer";
+  grid-template-areas: "header header header"
+ "main main main"
+ "footer footer footer";
   grid-template-rows: 4.5rem 70vh 9rem;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px; }
