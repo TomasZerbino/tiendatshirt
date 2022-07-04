@@ -9,7 +9,9 @@ const contenedorCarrito = document.getElementById('contenedorCarrito')
 const vaciarCarrito = document.getElementById('vaciarCarrito')
 const precioTotal = document.getElementById('precioTotal')
 
-const elCarrito = []
+
+
+let elCarrito = []
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('elCarrito')){
@@ -40,9 +42,8 @@ let stockProductos = [
     {id: 6, nombre: "Remera 6", cantidad:1, precio: 600, img: "./../assets/img/remera22.jpg"},
     {id: 7, nombre: "Hoodie 1", cantidad:1, precio: 1500, img: "./../assets/img/hoodie3.jpg"},
     {id: 8, nombre: "Hoodie 2", cantidad:1, precio: 1500, img: "./../assets/img/hoodie4.jpg"},
-    {id: 9, nombre: "Hoodie R", cantidad:1, precio: 1500, img: "./../assets/img/hoodie6.jpg"}
+    {id: 9, nombre: "Hoodie 3", cantidad:1, precio: 1500, img: "./../assets/img/hoodie6.jpg"}
 ]
-
 
 
     stockProductos.forEach((producto) =>{
@@ -57,17 +58,40 @@ let stockProductos = [
         `
         contenedorProductos.appendChild(div)
 
-        const btn = document.getElementById(`agregar${producto.id}`)
 
-        btn.addEventListener("click", () => {
-            agregarAlCarrito(producto.id)
+        const btn = document.getElementById(`agregar${producto.id}`)
+  
+        btn.addEventListener('click', () => {
+                    agregarAlCarrito(producto.id)
+
+                    swal.fire({
+                        toast: true,
+                        position: 'top-start',
+                        icon: 'success', 
+                        title:`${producto.nombre} agregado al carrito!`,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        showConfirmButton: false,
+                        background:'#556270',
+                        color:'#cccaca'
+                    })
         })
+
 
 })
 
 const agregarAlCarrito = (prodId) =>{
-    const item = stockProductos.find((prod) => prod.id === prodId)
-    elCarrito.push(item)
+    const stack = elCarrito.some(prod => prod.id ===prodId) //buscar si existe
+
+    if(stack){
+        const prod = elCarrito.map(prod => {
+            if(prod.id === prodId)
+            prod.cantidad++    
+        })
+    }else{ const item = stockProductos.find((prod) => prod.id === prodId)
+        elCarrito.push(item)
+    }
+
     ponerEnCarrito()
 }
 
@@ -78,7 +102,7 @@ const ponerEnCarrito = () =>{
     elCarrito.forEach((prod) =>{
         const div = document.createElement("div")
         div.className = "agregadoAlCarrito"
-        div.innerHTML = `<p>${prod.nombre}</p><p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p><p>Precio: $${prod.precio}</p>
+        div.innerHTML = `<p>${prod.nombre}</p><p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p><p>Precio: $${prod.precio * prod.cantidad}</p>
         <button onclick="eliminarDeCarrito(${prod.id})" class="btnEliminarDeCarrito"><i class= "far fa-trash-alt"></i></button>`
 
         contenedorCarrito.appendChild(div)
@@ -86,6 +110,9 @@ const ponerEnCarrito = () =>{
         localStorage.setItem('elCarrito', JSON.stringify(elCarrito))
         
     })
+    precioTotal.innerText = elCarrito.reduce((acc, prod) => acc + prod.precio*prod.cantidad,0)
+
+
 }
 
 
