@@ -8,10 +8,11 @@ const cerrarCarrito = document.getElementById('cerrarCarrito')
 const contenedorCarrito = document.getElementById('contenedorCarrito')
 const vaciarCarrito = document.getElementById('vaciarCarrito')
 const precioTotal = document.getElementById('precioTotal')
-
+const btnBorrar = document.querySelector('.btnEliminarDeCarrito')
 
 
 let elCarrito = []
+
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('elCarrito')){
@@ -74,7 +75,7 @@ const callArray = async () =>{
 })
 
 const agregarAlCarrito = (prodId) =>{
-    const stack = elCarrito.some(prod => prod.id ===prodId) //buscar si existe
+    const stack = elCarrito.some(prod => prod.id ===prodId) 
 
     if(stack){
         const prod = elCarrito.map(prod => {
@@ -87,13 +88,6 @@ const agregarAlCarrito = (prodId) =>{
 
     ponerEnCarrito()
 }
-
-}
-const eliminarItemCarrito = (prodId) =>{
-    const item = elCarrito.find((prod) => prod.id ===prodId)
-    const indice = elCarrito.indexOf(item)
-    elCarrito.splice(indice, 1)
-    ponerEnCarrito()
 }
 
 
@@ -104,7 +98,7 @@ const ponerEnCarrito = () =>{
         const div = document.createElement("div")
         div.className = "agregadoAlCarrito"
         div.innerHTML = `<p>${prod.nombre}</p><p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p><p>Precio: $${prod.precio * prod.cantidad}</p>
-        <button onclick="eliminarDeCarrito(${prod.id})" class="btnEliminarDeCarrito"><i class= "far fa-trash-alt"></i></button>`
+        <button class="btnEliminarDeCarrito"><i class= "far fa-trash-alt"></i></button>`
 
         contenedorCarrito.appendChild(div)
 
@@ -115,7 +109,7 @@ const ponerEnCarrito = () =>{
 
 }
 
-
+console.log(elCarrito)
 callArray()
 
 
@@ -174,7 +168,7 @@ callArray()
 //         const div = document.createElement('div')
 //         div.classList.add("cardProduct")
 //         div.innerHTML = `
-//         <img class="cardProduct__img" src=${producto.img}>
+//         <img class="cardProduct__img" src=${producto.img} alt= "">
 //         <div class="cardProduct__description">
 //         <strong class="cardProduct__description__price">$${producto.precio}</strong>
 //         <button id="agregar${producto.id}" class="cardProduct__description__buy">Comprar</button>
@@ -188,21 +182,28 @@ callArray()
 //         btn.addEventListener('click', () => {
 //                     agregarAlCarrito(producto.id)
 
-//                     swal.fire({
-//                         toast: true,
-//                         position: 'top-start',
-//                         icon: 'success', 
-//                         title:`${producto.nombre} agregado al carrito!`,
-//                         timer: 3000,
-//                         timerProgressBar: true,
-//                         showConfirmButton: false,
-//                         background:'#556270',
-//                         color:'#cccaca'
-//                     })
+                   
+//         })
+
+//         btn.addEventListener('click', () => {
+//             swal.fire({
+//                 toast: true,
+//                 position: 'top-start',
+//                 icon: 'success', 
+//                 title:`${producto.nombre} agregado al carrito!`,
+//                 timer: 3000,
+//                 timerProgressBar: true,
+//                 showConfirmButton: false,
+//                 background:'#556270',
+//                 color:'#cccaca'
+//             })
+      
 //         })
 
 
 // })
+  
+
 
 
 
@@ -221,6 +222,16 @@ callArray()
 //     ponerEnCarrito()
 // }
 
+// const eliminarDeCarrito = (prodId) => {
+//     const item = elCarrito.find((prod) => prod.id === prodId)
+
+//     const indice = elCarrito.indexOf(item) 
+
+//     elCarrito.splice(indice, 1) 
+
+//     ponerEnCarrito() 
+
+// }
 
 // const ponerEnCarrito = () =>{
 //     contenedorCarrito.innerHTML = ""
@@ -228,8 +239,8 @@ callArray()
 //     elCarrito.forEach((prod) =>{
 //         const div = document.createElement("div")
 //         div.className = "agregadoAlCarrito"
-//         div.innerHTML = `<p>${prod.nombre}</p><p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p><p>Precio: $${prod.precio * prod.cantidad}</p>
-//         <button class="btnEliminarDeCarrito"><i class= "far fa-trash-alt"></i></button>`
+//         div.innerHTML = `<p>${prod.nombre}</p><p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p><p>Precio: $${prod.precio}</p>
+//         <button onclick="eliminarDelCarrito(${prod.id})" class="btnEliminarDeCarrito"><i class= "far fa-trash-alt"></i></button>`
 
 //         contenedorCarrito.appendChild(div)
 
@@ -240,144 +251,4 @@ callArray()
 
 
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class Producto {
-//     constructor(nombre, precio, stock ){
-//     this.nombre = nombre;
-//     this.precio = Number(precio);
-//     this.stock = stock;
-//     }
-//     nuevoStock(x){
-//         this.stock = this.stock - x;
-//     }
-// }
-
-// const productos = [];
-// productos.push(new Producto ("remera", 600, 20));
-// productos.push(new Producto ("hoodie", 1500, 20));
-
-// const orednPrecio = () => {
-//     productos.sort((a,b) => a.precio - b.precio);
-//     mostratOrdenPrecio();
-// }
-
-// const listaProductos = () => {
-//     let array = [];
-//     productos.forEach(producto => array.push(producto.nombre+ " $"+producto.precio));
-//     alert("Lista de productos:"+"\n"+array.join("\n"));
-// }
-
-// let total= 0;
-
-// const pedidoProducto = () => {
-//     let producto = "";
-//     let cantidadProducto = 0;
-//     let precio = 0;
-//     let agregar;
-
-//     do {
-//         producto = prompt("¿Qué producto desea comprar?: remera o hoodie");
-//         cantidadProducto = parseInt(prompt("Cuantos deseada llevar.(Solo números)"));
-
-//     switch(producto) {
-//         case productos[0].nombre:
-//             productos[0].nuevoStock(cantidadProducto);
-//             if (productos[0].stock < 0 || isNaN(cantidadProducto)){
-//                 alert("No tenemos suficiente stock");
-//                 precio = 0;
-//                 cantidad = 0;
-//             }else{
-//                 precio = productos[0].precio;
-//             }
-//             break;
-//         case productos[1].nombre:
-//             productos[1].nuevoStock(cantidadProducto);
-//             if(productos[1].stock < 0 || isNaN(cantidadProducto)){
-//                 alert("No tenemos suficiente stock");
-//                 precio = 0;
-//                 cantidad = 0;
-//             }else{
-//                 precio = productos[1].precio;
-//             }
-//             break;
-//         default:
-//             alert("Algo de lo ingresado no es correcto") 
-//             precio = 0;
-//             cantidadProducto = 0;   
-//         }
-//         total = total + precio*cantidadProducto;
-//         agregar = confirm("Desea agregar otro producto?");
-//     } while (agregar);
-//     console.log(total)
-// }
-
-
-// const descuento = (total) => {
-//     if (total>=5000){
-//         total = total*0.85;
-//         alert("Felicitaciones tienes 15% de descuento en tu compra")
-//     }
-//     return total;
-// }
-
-// const envio = (total) =>{
-//     if(total > 2500){
-//         alert("Con compras mayores a $2500 envio gratis\n Tu compra es de: $"+total);
-//     }else {
-//         alert("El valor del envio es $200 \n Tu compra es de: $"+total);
-//         total = total + 200;
-//     }
-//     return total;
-// }
-// const obtenerTotal = (total) => {
-//     alert ("El total a pagar es $"+total);
-// }
-
-
-
-// const comprarProductos = () =>{
-//     pedidoProducto()
-//     obtenerTotal(envio(descuento(total)))
-// }
-
-//de momento funciona unicamente con el boton de la primera card
-// let botonComprar = document.querySelector("button.cardProduct__description__buy")
-// botonComprar.onclick = () =>{comprarProductos()}
-
-
-
-
-
-
-
+// console.log(elCarrito)
